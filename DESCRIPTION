@@ -1,22 +1,27 @@
 Package: telescope
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Load, visualize, and analyze spatial transcriptomic data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Eric Kort
+Maintainer: eric.kort <eric.kort@vai.org>
+Description: Loads data from 10XGenomics Spatial Transcriptomics 
+    pipeline, visualize gene expression, and interactively select 
+    subareas for further analysis.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
     EnsDb.Hsapiens.v86,
     EnsDb.Mmusculus.v79,
     AnnotationDbi,
-    shiny,
     foreach,
     ggplot2,
-    plotly
+    jsonlite,
+    magrittr,
+    plotly,
+    reshape2,
+    shiny,
+    utils
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,

@@ -6,7 +6,9 @@
 #' @param gene gene whose expression will be used to provide
 #'             visual indication of where spots of interest are.
 #' @import shiny
-#' @import plotly
+#' @importFrom plotly renderPlotly ggplotly plotlyOutput config layout
+#' @importFrom jsonlite fromJSON
+#' @importFrom magrittr %>%
 #' @export
 STChooseData <- function(x, gene) {
     ui <- shiny::fluidPage(
@@ -29,7 +31,7 @@ STChooseData <- function(x, gene) {
       })
 
       shiny::observeEvent(input$done, {
-        shiny::stopApp(jsonlite::fromJSON(input$`plotly_selected-A`))
+        shiny::stopApp(fromJSON(input$`plotly_selected-A`))
       })
 
     }
