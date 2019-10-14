@@ -32,7 +32,7 @@ Note that species is either "hs" (default), or "mm". Other genomes may be added 
 You can then plot the expression levels of one or more genes. Note that the genes argument can be either Ensembl ID, Entrez ID, or Gene Symbol.
 
 ```{r}
-STPlotGene(dat, c("Myh7", "Gapdh"))
+STPlotGene(dat, c("Myh7", "Gapdh"), normalize=TRUE)
 ```
 
 Sometime you may want to trim away non-tissue areas of the dataset. You can do this with an interactive shiny-based tool as follows, using one of the genes in your dataset to visualize where the tissue is.
