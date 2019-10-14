@@ -33,15 +33,23 @@ STPlotGene <- function(x, genes, size = 1, normalize = FALSE) {
   genes <- genes[which(!is.na(ix))]
   ix <- ix[which(!is.na(ix))]
   gd <- as.data.frame(x$exp[,ix])
-  if(normalize)
+  if(normalize) {
     gd <- as.data.frame(apply(gd, 2, function(x) { x <- x-min(x); x / max(x)}))
+    legname = "Normalized \nCounts"
+  } else {
+    legname = "Counts"
+  }
   gd$x <- x$x
   gd$y <- x$y
   gd <- melt(gd, id.vars=c("x", "y"))
   gd$variable <- factor(gd$variable, labels=genes)
   ggplot(gd, aes(x=gd$x, y=gd$y, color=gd$value)) +
-    geom_point(size = size) +
-    scale_color_gradientn(colors=c("#3488C1", "#F4EA93", "#DC4052"), na.value="transparent") +
+    geom_point(size = size ,) +
+    scale_color_gradientn(colors=c("#3488C1", "#F4EA93", "#DC4052"),
+                          na.value="transparent",
+                          name = legname) +
     facet_wrap(~variable, scales = "free") +
+    xlab("X") +
+    ylab("Y") +
     theme_bw()
 }
