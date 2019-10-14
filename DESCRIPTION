@@ -9,10 +9,16 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Requires:
-    shiny
 Imports:
     EnsDb.Hsapiens.v86,
     EnsDb.Mmusculus.v79,
-    AnnotationDbi
+    AnnotationDbi,
+    shiny,
+    foreach,
+    ggplot2,
+    plotly
 RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

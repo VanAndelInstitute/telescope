@@ -36,14 +36,16 @@ STLoad <- function(f, species = c("hs", "mm")) {
 #' Lookup gene data and create 2D heatmap of expression
 #'
 #' @param x An ST data object such as returned from STLoad
-#' @param gene gene identifier. Identifier type is identified
+#' @param genes gene identifier(s). Identifier type is identified
 #'             automatically.
 #'
+#' @param size Size of data in plot
+#' @param normalize Normalize expression to 0:1?
 #' @import ggplot2
 #' @importFrom foreach %do% foreach
 #' @export
 #'
-STPlotGene <- function(x, genes, size = 1) {
+STPlotGene <- function(x, genes, size = 1, normalize = FALSE) {
   ix <- foreach::foreach(g = genes, .combine=c) %do% {
     if(g %in% colnames(x$exp)) {
       ix <- which(colnames(x$exp) == g)[1]
@@ -62,6 +64,8 @@ STPlotGene <- function(x, genes, size = 1) {
   genes <- genes[which(!is.na(ix))]
   ix <- ix[which(!is.na(ix))]
   gd <- as.data.frame(x$exp[,ix])
+  if(normalize)
+    gd <- as.data.frame(apply(gd, 2, function(x) { x <- x-min(x); x / max(x)}))
   gd$x <- x$x
   gd$y <- x$y
   gd <- reshape2::melt(gd, id.vars=c("x", "y"))

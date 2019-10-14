@@ -4,13 +4,17 @@
 \alias{STPlotGene}
 \title{STPlotGene}
 \usage{
-STPlotGene(x, genes, size = 1)
+STPlotGene(x, genes, size = 1, normalize = FALSE)
 }
 \arguments{
 \item{x}{An ST data object such as returned from STLoad}
 
-\item{gene}{gene identifier. Identifier type is identified
+\item{genes}{gene identifier(s). Identifier type is identified
 automatically.}
+
+\item{size}{Size of data in plot}
+
+\item{normalize}{Normalize expression to 0:1?}
 }
 \description{
 Lookup gene data and create 2D heatmap of expression

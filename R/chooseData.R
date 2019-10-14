@@ -1,4 +1,4 @@
-#' chooseData
+#' STChooseData
 #'
 #' Select region of interest in ST spot matrix for display and analysis
 #'
@@ -6,13 +6,14 @@
 #' @param gene gene whose expression will be used to provide
 #'             visual indication of where spots of interest are.
 #' @import shiny
+#' @import plotly
 #' @export
-chooseData <- function(x, gene) {
+STChooseData <- function(x, gene) {
     ui <- shiny::fluidPage(
       shiny::titlePanel("Select region of interest"),
 
       # Sidebar layout with input and output definitions ----
-        shiny::mainPanel(
+        shiny::mainPanel(width = 6,
           plotlyOutput("plot"),
           shiny::actionButton("done", "Done")
         )
